@@ -1,9 +1,30 @@
 <!DOCTYPE html>
 <html>
-<head><title>SimuCheck</title></head>
-<body>
-    <h1>SimuCheck - Device Diagnostics</h1>
-    <p>Status: {{ result['status'] }}</p>
-    <p>Signal Strength: {{ result['signal_strength'] }}</p>
+<head>
+    <title>SimuCheck</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="container mt-5">
+    <h1 class="mb-4 text-primary">SimuCheck - Device Diagnostics</h1>
+
+    {% if result %}
+    <div class="alert alert-{{ 'success' if result['status'] == 'PASS' else 'danger' }}">
+        <strong>Status:</strong> {{ result['status'] }}<br>
+        <strong>Signal Strength:</strong> {{ result['signal_strength'] }}
+    </div>
+    {% else %}
+    <p>No test run yet. Click the button below to run one.</p>
+    {% endif %}
+
+    <a href="{{ url_for('run_test') }}" class="btn btn-primary mb-4">Run New Test</a>
+
+    {% if log_history %}
+    <h3>Test Log History</h3>
+    <ul class="list-group">
+        {% for entry in log_history %}
+        <li class="list-group-item">{{ entry }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
 </body>
 </html>
