@@ -7,3 +7,11 @@ FAIL | Strength: 64
 FAIL | Strength: 65
 PASS | Strength: 84
 PASS | Strength: 73
+FAIL | Strength: 70
+FAIL | Strength: 66
+FAIL | Strength: 60
+PASS | Strength: 86
+PASS | Strength: 95
+PASS | Strength: 72
+PASS | Strength: 83
+FAIL | Strength: 62
